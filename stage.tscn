@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d21gjonhd22ks"]
+[gd_scene load_steps=5 format=3 uid="uid://d21gjonhd22ks"]
 
-[ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://planet.tscn" id="1_kda38"]
+[ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://body.tscn" id="1_kda38"]
+[ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/bg_dummy.png" id="2_k20sh"]
+[ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
 
 [sub_resource type="GDScript" id="GDScript_4ujf6"]
 
@@ -8,18 +10,38 @@
 script = SubResource("GDScript_4ujf6")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 500.0
-offset_top = 15.0
-offset_right = 594.0
-offset_bottom = 41.0
+offset_left = 937.0
+offset_top = 19.0
+offset_right = 1077.0
+offset_bottom = 45.0
 text = "Planet smashers
 "
 
 [node name="Planet" parent="." instance=ExtResource("1_kda38")]
-position = Vector2(205, 342)
-linear_velocity = Vector2(0, -40)
+position = Vector2(469, 548)
+linear_velocity = Vector2(0, -135)
 
 [node name="Planet2" parent="." instance=ExtResource("1_kda38")]
-position = Vector2(574, 344)
+position = Vector2(813, 555)
+linear_velocity = Vector2(0, -230)
+
+[node name="BgDummy" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(962, 539)
+texture = ExtResource("2_k20sh")
+
+[node name="Star" parent="." instance=ExtResource("2_ltdnp")]
+position = Vector2(1051, 555)
 freeze = true
-linear_velocity = Vector2(0, 35)
+
+[node name="Area2D" parent="Star" index="1"]
+gravity = 30000.0
+
+[node name="AnimatedSprite2D" parent="Star" index="2"]
+autoplay = "shine"
+frame = 1
+frame_progress = 0.727627
+
+[editable path="Planet"]
+[editable path="Planet2"]
+[editable path="Star"]
