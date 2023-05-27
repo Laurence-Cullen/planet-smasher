@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://csgv6pr8oc3at"]
+
+[sub_resource type="Gradient" id="Gradient_u4g7g"]
+colors = PackedColorArray(0.854282, 0.37611, 0.767903, 1, 0.262138, 0.730206, 0.456265, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vnfib"]
+gradient = SubResource("Gradient_u4g7g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyscq"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q57dy"]
+radius = 3000.0
+
+[node name="Planet" type="RigidBody2D"]
+can_sleep = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_vnfib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cyscq")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+gravity_space_override = 1
+gravity_point = true
+gravity_point_unit_distance = 19.504
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 3000.0
+linear_damp_space_override = 1
+linear_damp = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_q57dy")
+one_way_collision_margin = 0.0
