@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d21gjonhd22ks"]
+
+[ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://planet.tscn" id="1_kda38"]
+
+[sub_resource type="GDScript" id="GDScript_4ujf6"]
+
+[node name="Stage" type="Node2D"]
+script = SubResource("GDScript_4ujf6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 500.0
+offset_top = 15.0
+offset_right = 594.0
+offset_bottom = 41.0
+text = "Planet smashers
+"
+
+[node name="Planet" parent="." instance=ExtResource("1_kda38")]
+position = Vector2(205, 342)
+linear_velocity = Vector2(0, -40)
+
+[node name="Planet2" parent="." instance=ExtResource("1_kda38")]
+position = Vector2(574, 344)
+freeze = true
+linear_velocity = Vector2(0, 35)
