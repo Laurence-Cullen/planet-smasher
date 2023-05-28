@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d21gjonhd22ks"]
+[gd_scene load_steps=8 format=3 uid="uid://d21gjonhd22ks"]
 
 [ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://body.tscn" id="1_kda38"]
 [ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_dn1se"]
 [ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
 [ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_w1jmv"]
+[ext_resource type="PackedScene" path="res://launch_pad.tscn" id="5_b0ypi"]
 
 [sub_resource type="GDScript" id="GDScript_4ujf6"]
 
@@ -56,6 +57,9 @@ frame_progress = 0.727627
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_w1jmv")
 autoplay = true
+
+[node name="LaunchPad" parent="." instance=ExtResource("5_b0ypi")]
+position = Vector2(1745, 881)
 
 [editable path="Planet"]
 [editable path="Planet2"]
