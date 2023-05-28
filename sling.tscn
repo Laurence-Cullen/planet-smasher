@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsrts0kqy3ia4"]
+[gd_scene load_steps=9 format=3 uid="uid://dsrts0kqy3ia4"]
 
 [ext_resource type="Script" path="res://Sling.gd" id="1_c1hgy"]
 [ext_resource type="Script" path="res://SlungPlanet.gd" id="2_4lus2"]
 [ext_resource type="Texture2D" uid="uid://bbl7iq4u4biav" path="res://Arrow.png" id="2_sfm20"]
-[ext_resource type="Texture2D" uid="uid://vdm6d7pn2cox" path="res://planet_orange1.png" id="3_g85cm"]
 
 [sub_resource type="Gradient" id="Gradient_tm1ug"]
 
@@ -17,13 +16,13 @@ gradient = SubResource("Gradient_6ua4l")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4oio7"]
-radius = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_av6bo"]
+radius = 19.65
 
 [node name="SlingNode" type="Node2D"]
 
 [node name="Sling" type="Node2D" parent="."]
-position = Vector2(400, 400)
+position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_c1hgy")
 
 [node name="Left" type="Node2D" parent="Sling"]
@@ -72,15 +71,14 @@ width = 2.08165e-12
 default_color = Color(0, 1, 1, 1)
 
 [node name="SlungPlanet" type="RigidBody2D" parent="."]
-position = Vector2(400, 360)
+position = Vector2(2.08165e-12, 2.08165e-12)
 input_pickable = true
 mass = 0.22
 gravity_scale = 2.66454e-15
 script = ExtResource("2_4lus2")
 
 [node name="Sprite" type="Sprite2D" parent="SlungPlanet"]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("3_g85cm")
+scale = Vector2(0.033, 0.033)
 
 [node name="Arrow" type="Node2D" parent="SlungPlanet"]
 
@@ -94,6 +92,6 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 100, 10)
 region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlungPlanet"]
-shape = SubResource("CircleShape2D_4oio7")
+shape = SubResource("CircleShape2D_av6bo")
 
 [connection signal="input_event" from="SlungPlanet" to="SlungPlanet" method="_on_input_event"]
