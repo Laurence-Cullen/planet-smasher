@@ -87,7 +87,7 @@ func _input(event):
 func on_drag():
 	arrow.visible = true
 	var distance = centre_position - global_position
-	var scale = distance.length() / 200
+	var scale = distance.length() / 100
 	arrow.scale.x = scale
 	arrow.scale.y = scale
 	arrow.rotation = -distance.angle_to(Vector2.RIGHT)
