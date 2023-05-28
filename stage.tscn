@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_dn1se"]
 [ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
 [ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_w1jmv"]
-[ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="5_b0ypi"]
+[ext_resource type="PackedScene" path="res://launch_pad.tscn" id="5_b0ypi"]
 
 [sub_resource type="GDScript" id="GDScript_4ujf6"]
 
@@ -15,27 +15,20 @@ font_size = 30
 script = SubResource("GDScript_4ujf6")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 937.0
+offset_left = 895.0
 offset_top = 19.0
-offset_right = 1077.0
-offset_bottom = 45.0
-text = "Planet smashers
-"
+offset_right = 1206.0
+offset_bottom = 64.0
+text = "Create a green planet"
 label_settings = SubResource("LabelSettings_6w3ei")
 
 [node name="Planet" parent="." instance=ExtResource("1_kda38")]
 position = Vector2(469, 548)
 linear_velocity = Vector2(0, -135)
 
-[node name="Gravitational field" parent="Planet" index="1"]
-gravity = 0.0
-
 [node name="Planet2" parent="." instance=ExtResource("1_kda38")]
 position = Vector2(813, 555)
 linear_velocity = Vector2(100, 0)
-
-[node name="Gravitational field" parent="Planet2" index="1"]
-gravity = 0.0
 
 [node name="BgDummy" type="Sprite2D" parent="."]
 z_index = -1
