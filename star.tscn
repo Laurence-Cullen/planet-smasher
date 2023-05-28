@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt50bvuxsuoyn"]
+[gd_scene load_steps=11 format=3 uid="uid://bt50bvuxsuoyn"]
 
+[ext_resource type="Script" path="res://star.gd" id="1_262ju"]
 [ext_resource type="Texture2D" uid="uid://c6psansvu2xvl" path="res://sprites/sun.png" id="1_ilqwy"]
 [ext_resource type="Texture2D" uid="uid://ipdpdqi55y4v" path="res://sprites/sun(4).png" id="2_lmbu8"]
 [ext_resource type="Texture2D" uid="uid://bfbp4wu34tndc" path="res://sprites/sun(1).png" id="3_yj1ed"]
@@ -8,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpnb8rxhn8h4v" path="res://sprites/sun(2).png" id="6_j26i3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byhvy"]
-radius = 19.6469
+radius = 45.2769
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q57dy"]
 radius = 10000.0
@@ -41,7 +42,10 @@ animations = [{
 
 [node name="Star" type="RigidBody2D"]
 collision_layer = 7
+max_contacts_reported = 10
+contact_monitor = true
 can_sleep = false
+script = ExtResource("1_262ju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_byhvy")
@@ -66,3 +70,5 @@ scale = Vector2(0.0629438, 0.0629438)
 sprite_frames = SubResource("SpriteFrames_1aev8")
 animation = &"shine"
 frame_progress = 0.906617
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

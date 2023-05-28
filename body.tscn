@@ -10,10 +10,12 @@ radius = 19.6469
 radius = 10000.0
 
 [node name="Planet" type="RigidBody2D"]
+collision_layer = 7
 max_contacts_reported = 20
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_w1ivo")
+metadata/is_slung = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_byhvy")
