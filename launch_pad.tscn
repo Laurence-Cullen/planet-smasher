@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1tq0qy7byxj5"]
+
+[ext_resource type="Texture2D" uid="uid://cl0v5nhohdgiw" path="res://sprites/launcharea.svg" id="2_fusrb"]
+[ext_resource type="PackedScene" uid="uid://dsrts0kqy3ia4" path="res://sling.tscn" id="3_re4ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tkvs"]
+size = Vector2(200, 200)
+
+[node name="LaunchPad" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_fusrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2tkvs")
+
+[node name="SlingNode" parent="." instance=ExtResource("3_re4ss")]
+position = Vector2(-50, -50)
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
