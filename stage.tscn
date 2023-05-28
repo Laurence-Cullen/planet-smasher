@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_dn1se"]
 [ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
 [ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_w1jmv"]
-[ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="5_b0ypi"]
+[ext_resource type="PackedScene" path="res://launch_pad.tscn" id="5_b0ypi"]
 
 [sub_resource type="GDScript" id="GDScript_4ujf6"]
 
