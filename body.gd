@@ -3,6 +3,9 @@ extends RigidBody2D
 
 var boom = preload("res://boom_1.tscn")
 
+signal colour_updated(new_colour)
+
+
 var is_slung
 var colour
 var age = 0
@@ -12,12 +15,14 @@ func _ready():
 	is_slung = get_meta("is_slung")
 	colour = get_meta("colour")
 	set_colour(colour)
+	add_to_group("planets")
 
 func get_texture_for_colour(c) -> Resource:
 	return load("res://sprites/planet_{colour}1.png".format({"colour": c}))
 
 func set_colour(c):
 	$"Sprite".set_texture(get_texture_for_colour(c))
+	colour_updated.emit(c)
 	self.colour = c
 
 func one_colour_is(colour1, colour2, target_colour):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d21gjonhd22ks"]
+[gd_scene load_steps=9 format=3 uid="uid://d21gjonhd22ks"]
 
 [ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://body.tscn" id="1_kda38"]
 [ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_dn1se"]
 [ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
 [ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_w1jmv"]
 [ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="5_b0ypi"]
+[ext_resource type="PackedScene" uid="uid://b7hsm4cuv1tvi" path="res://objective_checker.tscn" id="6_hhnr7"]
 
 [sub_resource type="GDScript" id="GDScript_4ujf6"]
 
@@ -53,6 +54,10 @@ autoplay = true
 
 [node name="LaunchPad" parent="." instance=ExtResource("5_b0ypi")]
 position = Vector2(1745, 881)
+
+[node name="ObjectiveChecker" parent="." instance=ExtResource("6_hhnr7")]
+
+[connection signal="colour_updated" from="Planet" to="ObjectiveChecker" method="_on_planet_colour_updated"]
 
 [editable path="Planet"]
 [editable path="Planet2"]
