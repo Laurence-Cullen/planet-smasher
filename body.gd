@@ -31,7 +31,7 @@ func _on_body_entered(body):
 
 	animate_explosion(body)
 		# If we hit a star delete ourselves	
-	if other_body.name == 'Star':
+	if other_body.name == 'Star' || other_body.name == 'SlungPlanet':
 		queue_free()
 		return
 		
