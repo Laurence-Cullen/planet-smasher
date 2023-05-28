@@ -25,9 +25,15 @@ label_settings = SubResource("LabelSettings_6w3ei")
 position = Vector2(469, 548)
 linear_velocity = Vector2(0, -135)
 
+[node name="Gravitational field" parent="Planet" index="1"]
+gravity = 0.0
+
 [node name="Planet2" parent="." instance=ExtResource("1_kda38")]
 position = Vector2(813, 555)
-linear_velocity = Vector2(0, -230)
+linear_velocity = Vector2(0, -210)
+
+[node name="Gravitational field" parent="Planet2" index="1"]
+gravity = 0.0
 
 [node name="BgDummy" type="Sprite2D" parent="."]
 z_index = -1

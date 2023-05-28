@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://csgv6pr8oc3at"]
+[gd_scene load_steps=5 format=3 uid="uid://csgv6pr8oc3at"]
 
 [ext_resource type="Texture2D" uid="uid://cqbm1kc7ymddh" path="res://sprites/planet_red1.png" id="1_itvl2"]
+[ext_resource type="Script" path="res://body.gd" id="1_w1ivo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byhvy"]
 radius = 19.6469
@@ -9,7 +10,10 @@ radius = 19.6469
 radius = 10000.0
 
 [node name="Planet" type="RigidBody2D"]
+max_contacts_reported = 20
+contact_monitor = true
 can_sleep = false
+script = ExtResource("1_w1ivo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_byhvy")
@@ -32,3 +36,5 @@ one_way_collision_margin = 0.0
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0334421, 0.0334421)
 texture = ExtResource("1_itvl2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

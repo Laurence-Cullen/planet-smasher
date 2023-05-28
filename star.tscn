@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="Star" type="RigidBody2D"]
+collision_layer = 7
 can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
