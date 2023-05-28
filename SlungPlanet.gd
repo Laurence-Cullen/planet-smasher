@@ -15,7 +15,7 @@ var force = 10;
 var projected_velocity = Vector2.ZERO
 var projected_position = Vector2.ZERO
 var colour = null
-var colours = ["orange", "red", "green", "grey", "purple", "yellow", "blue"]
+var colours = ["red", "yellow", "blue"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,12 +51,13 @@ func _process(_delta):
 		planet.set_global_position(projected_position)
 		planet.linear_velocity = projected_velocity
 		# Set the colour of the new planet
-		planet.get_node("Sprite").set_texture(get_texture_for_colour(colour))
+		# planet.get_node("Sprite").set_texture(get_texture_for_colour(colour))
 		planet.set_meta("is_slung", true)
 		planet.set_meta("colour", colour)
 
 		# FIXME
 		set_colour(colours[randi() % len(colours)])
+		set_meta("colour", colour)
 
 		# Add it to the stage
 		var stage = $"../../.."
