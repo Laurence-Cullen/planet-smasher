@@ -24,7 +24,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if state != PRESSED && !boundary.has_point(global_position):
 		# Retain the velocity and the global position before
 		# resetting the slung planet
@@ -105,14 +105,14 @@ func shoot():
 	state = SHOT
 
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.is_pressed():
 		state = PRESSED
 
 
-func get_texture_for_colour(colour) -> Resource:
-	return load("res://sprites/planet_{colour}1.png".format({"colour": colour}))
+func get_texture_for_colour(c) -> Resource:
+	return load("res://sprites/planet_{colour}1.png".format({"colour": c}))
 
-func set_colour(colour):
-	$"Sprite".set_texture(get_texture_for_colour(colour))
-	self.colour = colour
+func set_colour(c):
+	$"Sprite".set_texture(get_texture_for_colour(c))
+	self.colour = c

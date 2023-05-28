@@ -15,27 +15,20 @@ font_size = 30
 script = SubResource("GDScript_4ujf6")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 937.0
+offset_left = 895.0
 offset_top = 19.0
-offset_right = 1077.0
-offset_bottom = 45.0
-text = "Planet smashers
-"
+offset_right = 1206.0
+offset_bottom = 64.0
+text = "Create a green planet"
 label_settings = SubResource("LabelSettings_6w3ei")
 
 [node name="Planet" parent="." instance=ExtResource("1_kda38")]
 position = Vector2(469, 548)
 linear_velocity = Vector2(0, -135)
 
-[node name="Gravitational field" parent="Planet" index="1"]
-gravity = 0.0
-
 [node name="Planet2" parent="." instance=ExtResource("1_kda38")]
 position = Vector2(813, 555)
 linear_velocity = Vector2(100, 0)
-
-[node name="Gravitational field" parent="Planet2" index="1"]
-gravity = 0.0
 
 [node name="BgDummy" type="Sprite2D" parent="."]
 z_index = -1

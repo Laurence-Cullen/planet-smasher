@@ -3,15 +3,25 @@ extends RigidBody2D
 
 var boom = preload("res://boom_1.tscn")
 
-var is_slung = get_meta("is_slung", null)
+var is_slung
+var colour
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	is_slung = get_meta("is_slung", null)
+	colour = get_meta("colour")
+	set_colour(colour)
 
+func get_texture_for_colour(c) -> Resource:
+	return load("res://sprites/planet_{colour}1.png".format({"colour": c}))
+
+func set_colour(c):
+	$"Sprite".set_texture(get_texture_for_colour(c))
+	self.colour = c
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 
