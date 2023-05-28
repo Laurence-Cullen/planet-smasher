@@ -75,6 +75,7 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 input_pickable = true
 mass = 0.22
 gravity_scale = 2.66454e-15
+lock_rotation = true
 script = ExtResource("2_4lus2")
 
 [node name="Sprite" type="Sprite2D" parent="SlungPlanet"]
