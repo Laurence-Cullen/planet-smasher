@@ -35,7 +35,6 @@ texture = ExtResource("2_dn1se")
 [node name="Star" parent="." instance=ExtResource("2_ltdnp")]
 position = Vector2(1051, 555)
 freeze = true
-script = null
 
 [node name="Area2D" parent="Star" index="1"]
 gravity = 30000.0

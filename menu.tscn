@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qhumfiogtmvi"]
 
 [ext_resource type="AudioStream" uid="uid://bcb1cok33c204" path="res://audio/smash-planet-intro.mp3" id="1_fbb2l"]
-[ext_resource type="Texture2D" uid="uid://yy3425qcdqoy" path="res://sprites/main_menu_dummy.jpg" id="2_da4yc"]
+[ext_resource type="Texture2D" uid="uid://dncybci3cc0gh" path="res://sprites/mainMenu.png" id="2_mkjdi"]
 [ext_resource type="Script" path="res://Button.gd" id="3_yra5e"]
 
 [node name="Menu" type="Node2D"]
@@ -12,7 +12,7 @@ autoplay = true
 
 [node name="MainMenuDummy" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_da4yc")
+texture = ExtResource("2_mkjdi")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 379.0
