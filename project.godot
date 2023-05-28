@@ -22,6 +22,12 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_physics/layer_1="Planets"
+2d_physics/layer_2="Star"
+2d_physics/layer_3="SlungPlanet"
+
 [physics]
 
 2d/default_gravity=0.0

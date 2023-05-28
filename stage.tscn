@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d21gjonhd22ks"]
+[gd_scene load_steps=8 format=3 uid="uid://d21gjonhd22ks"]
 
-[ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/bg_dummy.png" id="2_k20sh"]
-[ext_resource type="PackedScene" uid="uid://doqxbphsn7kg6" path="res://star.tscn" id="2_ltdnp"]
-[ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="3_2dm40"]
+[ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://body.tscn" id="1_kda38"]
+[ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_dn1se"]
+[ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="2_ltdnp"]
+[ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_w1jmv"]
+[ext_resource type="PackedScene" path="res://launch_pad.tscn" id="5_b0ypi"]
+
+[sub_resource type="GDScript" id="GDScript_4ujf6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w3ei"]
 font_size = 30
 
 [node name="Stage" type="Node2D"]
+script = SubResource("GDScript_4ujf6")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 937.0
@@ -18,10 +23,24 @@ text = "Planet smashers
 "
 label_settings = SubResource("LabelSettings_6w3ei")
 
+[node name="Planet" parent="." instance=ExtResource("1_kda38")]
+position = Vector2(469, 548)
+linear_velocity = Vector2(0, -135)
+
+[node name="Gravitational field" parent="Planet" index="1"]
+gravity = 0.0
+
+[node name="Planet2" parent="." instance=ExtResource("1_kda38")]
+position = Vector2(813, 555)
+linear_velocity = Vector2(100, 0)
+
+[node name="Gravitational field" parent="Planet2" index="1"]
+gravity = 0.0
+
 [node name="BgDummy" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(962, 539)
-texture = ExtResource("2_k20sh")
+position = Vector2(960, 540)
+texture = ExtResource("2_dn1se")
 
 [node name="Star" parent="." instance=ExtResource("2_ltdnp")]
 position = Vector2(1051, 555)
@@ -35,7 +54,13 @@ autoplay = "shine"
 frame = 1
 frame_progress = 0.727627
 
-[node name="LaunchPad" parent="." instance=ExtResource("3_2dm40")]
-position = Vector2(1798, 955)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w1jmv")
+autoplay = true
 
+[node name="LaunchPad" parent="." instance=ExtResource("5_b0ypi")]
+position = Vector2(1745, 881)
+
+[editable path="Planet"]
+[editable path="Planet2"]
 [editable path="Star"]
