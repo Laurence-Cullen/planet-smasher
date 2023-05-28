@@ -7,13 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="5_b0ypi"]
 [ext_resource type="PackedScene" uid="uid://b7hsm4cuv1tvi" path="res://objective_checker.tscn" id="6_hhnr7"]
 
-[sub_resource type="GDScript" id="GDScript_4ujf6"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_6w3ei"]
 font_size = 30
 
 [node name="Stage" type="Node2D"]
-script = SubResource("GDScript_4ujf6")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 895.0

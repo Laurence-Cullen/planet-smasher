@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://co8ymtdak3tew"]
+
+[ext_resource type="PackedScene" uid="uid://csgv6pr8oc3at" path="res://body.tscn" id="1_xa73t"]
+[ext_resource type="Texture2D" uid="uid://iysb6t6x3htg" path="res://sprites/stage_bg.png" id="2_msbyq"]
+[ext_resource type="PackedScene" uid="uid://bt50bvuxsuoyn" path="res://star.tscn" id="3_d4ya7"]
+[ext_resource type="AudioStream" uid="uid://d4efjkhbt372q" path="res://audio/smash-planet-main.mp3" id="4_5y8lx"]
+[ext_resource type="PackedScene" uid="uid://b1tq0qy7byxj5" path="res://launch_pad.tscn" id="5_abskf"]
+[ext_resource type="Texture2D" uid="uid://4d001ca2uoak" path="res://sprites/box.svg" id="8_vu1is"]
+[ext_resource type="FontFile" uid="uid://uja7aswrqcus" path="res://fonts/Merriweather-Regular.ttf" id="9_dndea"]
+[ext_resource type="Texture2D" uid="uid://c0ecssweoxban" path="res://sprites/restartlevelbutton.svg" id="9_ttnyc"]
+[ext_resource type="FontFile" uid="uid://dfm588o3yurc5" path="res://fonts/Raleway-Black.ttf" id="10_mltpq"]
+[ext_resource type="Script" path="res://RestartButton.gd" id="10_rdxiy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6w3ei"]
+font_size = 30
+
+[node name="Stage2" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 937.0
+offset_top = 19.0
+offset_right = 1077.0
+offset_bottom = 45.0
+text = "Planet smashers
+"
+label_settings = SubResource("LabelSettings_6w3ei")
+
+[node name="Planet" parent="." instance=ExtResource("1_xa73t")]
+position = Vector2(469, 548)
+linear_velocity = Vector2(8, -135)
+metadata/colour = "blue"
+
+[node name="Planet2" parent="." instance=ExtResource("1_xa73t")]
+position = Vector2(813, 555)
+linear_velocity = Vector2(-10, -180)
+metadata/colour = "yellow"
+
+[node name="BgDummy" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("2_msbyq")
+
+[node name="Star" parent="." instance=ExtResource("3_d4ya7")]
+position = Vector2(1051, 555)
+freeze = true
+
+[node name="Area2D" parent="Star" index="1"]
+gravity = 30000.0
+
+[node name="AnimatedSprite2D" parent="Star" index="2"]
+autoplay = "shine"
+frame = 1
+frame_progress = 0.727627
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5y8lx")
+autoplay = true
+
+[node name="LaunchPad" parent="." instance=ExtResource("5_abskf")]
+position = Vector2(1745, 881)
+
+[node name="Box" type="Sprite2D" parent="."]
+position = Vector2(10, 10)
+texture = ExtResource("8_vu1is")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Box"]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("9_dndea")
+theme_override_fonts/bold_font = ExtResource("10_mltpq")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]OBJECTIVE:[/b] Create a purple planet.
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="RestartButton" type="TextureButton" parent="."]
+offset_left = 1113.0
+offset_top = 950.0
+offset_right = 1589.0
+offset_bottom = 1056.0
+texture_normal = ExtResource("9_ttnyc")
+script = ExtResource("10_rdxiy")
+
+[connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_pressed"]
+
+[editable path="Star"]
