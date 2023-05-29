@@ -52,31 +52,29 @@ func delete_older_planet(planet1, planet2):
 func animate_explosion(body):
 	var boom_instance = boom.instantiate()
 	get_parent().add_child(boom_instance)
-	boom_instance.position = body.position
+	boom_instance.set_global_position(body.global_position)
 
 func _on_body_entered(body):
-	var other_body = get_colliding_bodies()[0]
-
 	animate_explosion(body)
 	
 	# If we hit a star delete ourselves
-	if other_body.name == 'Star':
+	if body.name == 'Star' || body.name == 'SlungPlanet':
 		queue_free()
 		return
 		
 	# If neither planet is slung delete the slower one
-	if not is_slung and not other_body.get_meta('is_slung'):
+	if not is_slung and not body.get_meta('is_slung'):
 		print("neither slung")
-		delete_older_planet(body, other_body)
+		delete_older_planet(self, body)
 	
 	# If both planets are slung delete the slower one
-	elif is_slung and other_body.get_meta('is_slung'):
+	elif is_slung and body.get_meta('is_slung'):
 		print("both slung")
-		delete_older_planet(body, other_body)
+		delete_older_planet(self, body)
 	
 	# If the other planet is slung delete it
-	elif other_body.get_meta('is_slung'):
+	elif body.get_meta('is_slung'):
 		print("Only other slung")
-		other_body.queue_free()
+		body.queue_free()
 	
-	set_colour(mix_colours(body.get_meta('colour'), other_body.get_meta('colour')))
+	set_colour(mix_colours(get_meta('colour'), body.get_meta('colour')))
