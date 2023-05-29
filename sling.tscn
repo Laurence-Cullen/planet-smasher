@@ -76,6 +76,7 @@ input_pickable = true
 mass = 0.22
 gravity_scale = 2.66454e-15
 lock_rotation = true
+freeze = true
 script = ExtResource("2_4lus2")
 
 [node name="Sprite" type="Sprite2D" parent="SlungPlanet"]
