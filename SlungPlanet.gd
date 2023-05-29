@@ -2,14 +2,16 @@ extends RigidBody2D
 
 enum {UNPRESSED, PRESSED, SHOT, PROJECTING}
 
-var state = UNPRESSED  # whether the planet has been preseed - default undefined
+@export var age = 0
 
-@onready var centre_position = $"../Sling/Centre".global_position
+@export var state = UNPRESSED  # whether the planet has been preseed - default undefined
+
+@onready var centre = $"../Sling/Centre"
 @onready var sling = $"../Sling"
 @onready var arrow = $"Arrow/Sprite"
 @onready var root = $".."
-@onready var launchpad_position = $"../..".global_position
-@onready var boundary = Rect2(launchpad_position.x - 100, launchpad_position.y - 100, 200.0, 200.0)
+@onready var launchpad_position = $"../../Area2D/CollisionShape2D".global_position
+@onready var boundary = Rect2(launchpad_position.x - 167.5, launchpad_position.y - 167.5, 335.0, 335.0)
 
 var force = 10;
 var projected_velocity = Vector2.ZERO
@@ -25,7 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if state != PRESSED && !boundary.has_point(global_position):
+	if state != PRESSED && !boundary.grow(40).has_point(global_position):
 		# Retain the velocity and the global position before
 		# resetting the slung planet
 		projected_velocity = linear_velocity
@@ -33,7 +35,6 @@ func _process(_delta):
 
 		# Disable and freeze so we don't move or interact
 		set_deferred("disable_mode", true)
-		set_deferred("freeze", true)
 
 		# Set the global position back to our initial postiion
 		set_global_position(root.global_position)
@@ -63,9 +64,8 @@ func _process(_delta):
 		var stage = $"../../.."
 		stage.add_child(planet)
 
-		# We can now interact
 		set_deferred("disable_mode", false)
-		set_deferred("freeze", false)
+		set_deferred("freeze", true)
 		state = UNPRESSED
 
 
@@ -81,13 +81,12 @@ func _input(event):
 		on_drag()
 
 		if event is InputEventMouseButton && !event.is_pressed():
-			state = UNPRESSED
 			shoot()
 
 
 func on_drag():
 	arrow.visible = true
-	var distance = centre_position - global_position
+	var distance = centre.global_position - global_position
 	var scale = distance.length() / 100
 	arrow.scale.x = scale
 	arrow.scale.y = scale
@@ -99,7 +98,7 @@ func on_drag():
 func shoot():
 	arrow.visible = false
 	sling.reset_line_to_origin()
-	var distance = centre_position - global_position
+	var distance = centre.global_position - global_position
 	var impulse = distance.normalized() * distance.length() * force
 
 	apply_impulse(distance, impulse)
@@ -108,6 +107,7 @@ func shoot():
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.is_pressed():
+		set_deferred("freeze", false)
 		state = PRESSED
 
 
